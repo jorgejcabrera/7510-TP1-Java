@@ -7,6 +7,23 @@ import java.util.List;
 
 public class RuleTest {
 
+
+    @Test
+    public void testDeberiaInizialitarFactsOk() {
+        Rule rule = new Rule("hijo(X, Y) :- varon(X), padre(Y, X)");
+        Assert.assertFalse(rule.getFacts().isEmpty());
+        Assert.assertTrue(rule.getFacts().contains("varon(X)"));
+        Assert.assertTrue(rule.getFacts().contains("padre(Y, X)"));
+    }
+
+    @Test
+    public void testDeberiaInizialitarParamsOk() {
+        Rule rule = new Rule("hijo(X, Y) :- varon(X), padre(Y, X)");
+        Assert.assertFalse(rule.getParams().isEmpty());
+        Assert.assertTrue(rule.getParams().contains("X"));
+        Assert.assertTrue(rule.getParams().contains("Y"));
+    }
+
     @Test
     public void testDeberiaDevolverToString() {
         Rule rule = new Rule("hijo(X, Y) :- varon(X), padre(Y, X)");
